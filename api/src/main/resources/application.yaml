@@ -16,6 +16,3 @@ queue:
   bookingAdd: BookingAddQueue
   bookingDelete: BookingDeleteQueue
   bookingEdit: BookingEditQueue
-logging:
-  level:
-    org.springframework: DEBUG
