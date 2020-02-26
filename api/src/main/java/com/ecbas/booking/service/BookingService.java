@@ -28,7 +28,7 @@ public interface BookingService {
      * Persist a booking into the database.
      *
      * @param request The booking to be persisted.
-     * @return The id of the booking to be created.
+     * @return The id of the event responsible for the action.
      */
     UUID add(BookingAddRequestDTO request);
 
@@ -37,14 +37,14 @@ public interface BookingService {
      *
      * @param id      The booking identifier.
      * @param request The booking information to be edited.
-     * @return The id of the event responsible for the action,
+     * @return The id of the event responsible for the action.
      */
     UUID edit(UUID id, BookingEditRequestDTO request);
 
     /**
      * Deletes a specific booking by its identifier.
      *
-     * @return The id of the event responsible for the action,
+     * @return The id of the event responsible for the action.
      */
     UUID deleteById(UUID id);
 }
