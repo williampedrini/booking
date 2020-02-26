@@ -5,10 +5,11 @@ import {Observable} from 'rxjs';
 import BookingAddRequest from '../../models/BookingAddRequest';
 import ErrorResponse from '../../models/ResponseError';
 import BookingEditRequest from '../../models/BookingEditRequest';
+import {environment} from '../../../../environments/environment';
 
 @Injectable()
 export class BookingService {
-    private static BASE_URL = 'http://localhost:8080/bookings';
+    private static BASE_URL = environment.bookingApiBaseUrl + '/bookings';
 
     constructor(private http: HttpClient) {
     }

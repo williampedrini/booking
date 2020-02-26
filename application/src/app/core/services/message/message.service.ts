@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {AlertSnackBarComponent} from '../../alert-snack-bar/alert-snack-bar.component';
 
 @Injectable({
     providedIn: 'root'
@@ -9,14 +10,22 @@ export class MessageService {
     }
 
     success(message: string) {
-        this.snackBar.open(message, 'success', {
-            duration: 5 * 1000
+        this.snackBar.openFromComponent(AlertSnackBarComponent, {
+            duration: 5 * 1000,
+            data: {
+                type: 'Success',
+                messages: [message]
+            }
         });
     }
 
-    error(message: string) {
-        this.snackBar.open(message, 'error', {
-            duration: 5 * 1000
+    error(errorMessages: Array<string>) {
+        this.snackBar.openFromComponent(AlertSnackBarComponent, {
+            duration: 5 * 1000,
+            data: {
+                type: 'Error',
+                messages: errorMessages
+            }
         });
     }
 }

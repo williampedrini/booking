@@ -1,0 +1,2 @@
+<h2 [ngClass]="data.type === 'Error' ? 'errorAlert' : 'successAlert'">{{data.type}}</h2>
+<p *ngFor="let message of data.messages"><span>{{message}}</span></p>
