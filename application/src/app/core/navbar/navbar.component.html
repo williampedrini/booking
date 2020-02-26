@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+    <span class="fill-remaining-space"></span>
+    <button [mat-menu-trigger-for]="menu" mat-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/">
+        <i class="material-icons">collections</i> Bookings
+    </button>
+    <button mat-menu-item routerLink="/bookings">
+        <i class="material-icons">book</i> Registration
+    </button>
+</mat-menu>

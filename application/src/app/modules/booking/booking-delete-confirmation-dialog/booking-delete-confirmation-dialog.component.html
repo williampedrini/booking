@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Deletion Confirmation</h1>
+<div mat-dialog-content>
+    <p>Would like to confirm the deletion?</p>
+</div>
+<div mat-dialog-actions>
+    <button (click)="onCancelClick()" mat-raised-button>No</button>
+    <button (click)="onConfirmationClick()" cdkFocusInitial color="warn" mat-raised-button>Yes</button>
+</div>

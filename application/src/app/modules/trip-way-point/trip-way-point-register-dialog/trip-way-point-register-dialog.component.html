@@ -1,0 +1,34 @@
+<form #tripWayPointForm="ngForm" (ngSubmit)="tripWayPointForm.form.valid && onConfirmationClick()">
+    <h1 mat-dialog-title>Trip Way Register</h1>
+    <div mat-dialog-content>
+        <mat-form-field class="fullWidth">
+            <mat-label>Locality</mat-label>
+            <input [(ngModel)]="tripWayPoint.locality" id="locality" matInput name="locality" required>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth">
+            <mat-label>Latitude</mat-label>
+            <input [(ngModel)]="tripWayPoint.lat" id="lat" matInput name="lat" required type="number">
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth">
+            <mat-label>Longitude</mat-label>
+            <input [(ngModel)]="tripWayPoint.lng" id="lng" matInput name="lng" required type="number">
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth">
+            <mat-label>Time</mat-label>
+            <input [(ngModel)]="tripWayPoint.tripWayPointTimestamp" id="tripWayPointTimestamp" matInput
+                   name="tripWayPointTimestamp"
+                   required type="datetime-local">
+        </mat-form-field>
+
+        <div class="fullWidth formField left">
+            <mat-checkbox [(ngModel)]="tripWayPoint.lastStop" id="lastStop" name="lastStop">Last Stop</mat-checkbox>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button (click)="onCancelClick()" mat-raised-button>Cancel</button>
+        <button cdkFocusInitial color="primary" mat-raised-button type="submit">Add</button>
+    </div>
+</form>

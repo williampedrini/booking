@@ -1,0 +1,88 @@
+<div class="container">
+    <button color="primary" mat-raised-button routerLink="/bookings">
+        <i class="material-icons">add</i> Booking
+    </button>
+</div>
+<div class="container">
+    <table [dataSource]="bookings" class="mat-elevation-z8" mat-table>
+        <ng-container matColumnDef="index">
+            <th *matHeaderCellDef mat-header-cell>#</th>
+            <td *matCellDef="let booking; let index = index;" mat-cell>{{index}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="passengerName">
+            <th *matHeaderCellDef mat-header-cell>Passenger Name</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.passengerName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="passengerContactNumber">
+            <th *matHeaderCellDef mat-header-cell>Passenger Contact Number</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.passengerContactNumber}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="pickupTime">
+            <th *matHeaderCellDef mat-header-cell>Pickup Time</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.pickupTime | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="waitingTime">
+            <th *matHeaderCellDef mat-header-cell>Waiting Time</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.waitingTime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="noOfPassengers">
+            <th *matHeaderCellDef mat-header-cell>Number of Passengers</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.noOfPassengers}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th *matHeaderCellDef mat-header-cell>Price</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="rating">
+            <th *matHeaderCellDef mat-header-cell>Rating</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.rating}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdOn">
+            <th *matHeaderCellDef mat-header-cell>Created On</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.createdOn | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hasModifiedOn">
+            <th *matHeaderCellDef mat-header-cell>Modified On</th>
+            <td *matCellDef="let booking" mat-cell> {{booking.hasModifiedOn | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="editAction">
+            <th *matHeaderCellDef mat-header-cell></th>
+            <td *matCellDef="let booking" mat-cell>
+                <button (click)="onEditClick(booking)" mat-raised-button>
+                    <i class="material-icons">edit</i> Edit
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="deleteAction">
+            <th *matHeaderCellDef mat-header-cell></th>
+            <td *matCellDef="let booking; let index = index" mat-cell>
+                <button (click)="openDeleteDialog(booking.bookingId,index)" color="warn" mat-raised-button>
+                    <i class="material-icons">delete</i> Delete
+                </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipWayPointViewAction">
+            <th *matHeaderCellDef mat-header-cell></th>
+            <td *matCellDef="let booking" mat-cell>
+                <button (click)="openTripWayPointDialog(booking.tripWayPoints)" mat-raised-button>
+                    <i class="material-icons">location_on</i>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+    </table>
+</div>

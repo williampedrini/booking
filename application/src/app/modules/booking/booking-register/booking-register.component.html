@@ -1,0 +1,64 @@
+<div class="container">
+    <form #bookingForm="ngForm" (ngSubmit)="bookingForm.form.valid && onSaveClick()">
+        <h1>Booking Register</h1>
+        <div class="bookingRegisterContainer">
+            <mat-form-field class="fullWidth">
+                <mat-label>Passenger Name</mat-label>
+                <input [(ngModel)]="booking.passengerName" id="passengerName" matInput name="passengerName"
+                       required>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth">
+                <mat-label>Passenger Contact Number</mat-label>
+                <input [(ngModel)]="booking.passengerContactNumber" id="passengerContactNumber" matInput
+                       name="passengerContactNumber" required>
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth">
+                <mat-label>Choose a pickup time</mat-label>
+                <input [(ngModel)]="booking.pickupTime" id="pickupTime" matInput name="pickupTime"
+                       type="datetime-local">
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth">
+                <mat-label>Waiting time</mat-label>
+                <input [(ngModel)]="booking.waitingTime" id="waitingTime" matInput name="waitingTime" required
+                       type="number">
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth">
+                <mat-label>Number of Passengers</mat-label>
+                <input [(ngModel)]="booking.noOfPassengers" id="noOfPassengers" matInput name="noOfPassengers"
+                       required type="number">
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth">
+                <mat-label>Price</mat-label>
+                <input [(ngModel)]="booking.price" id="price" matInput name="price" required type="number">
+            </mat-form-field>
+
+            <mat-form-field class="fullWidth">
+                <mat-label>Rating</mat-label>
+                <input [(ngModel)]="booking.rating" id="rating" matInput name="rating" required type="number">
+            </mat-form-field>
+
+            <div class="fullWidth formField left">
+                <mat-checkbox [(ngModel)]="booking.asap" id="asap" name="asap">As soon as possible</mat-checkbox>
+            </div>
+
+            <div class="bookingRegisterTable fullWidth">
+                <div class="formField left">
+                    <button (click)="onAddTripWayPointClick($event)" color="accent" mat-stroked-button>
+                        <i class="material-icons">add</i> Trip Way Point
+                    </button>
+                </div>
+                <app-trip-way-point-list [tripWayPoints]="booking.tripWayPoints"></app-trip-way-point-list>
+            </div>
+        </div>
+        <div class="bookingRegisterButtonSection">
+            <button cdkFocusInitial class="fullWidth" color="primary" mat-stroked-button type="submit">
+                Save <i class="material-icons">save</i>
+            </button>
+        </div>
+    </form>
+</div>

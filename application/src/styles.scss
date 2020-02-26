@@ -1,0 +1,40 @@
+a {
+  cursor: pointer;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+form {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  text-align: left;
+}
+
+.container {
+  margin-left: auto;
+  padding: 20px 30px;
+}
+
+.formField {
+  padding-bottom: 20px;
+}
+
+.fullWidth {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+
+.left {
+  text-align: left;
+}

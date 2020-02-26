@@ -1,0 +1,44 @@
+<table [dataSource]="tripWayPoints" class="tripWayPointTable" mat-table>
+    <ng-container matColumnDef="index">
+        <th *matHeaderCellDef mat-header-cell>#</th>
+        <td *matCellDef="let tripWayPoint; let index = index;" mat-cell>{{index}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="locality">
+        <th *matHeaderCellDef mat-header-cell>Locality</th>
+        <td *matCellDef="let tripWayPoint" mat-cell>{{tripWayPoint.locality}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lat">
+        <th *matHeaderCellDef mat-header-cell>Latitude</th>
+        <td *matCellDef="let tripWayPoint" mat-cell>{{tripWayPoint.lat}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lng">
+        <th *matHeaderCellDef mat-header-cell>Longitude</th>
+        <td *matCellDef="let tripWayPoint" mat-cell>{{tripWayPoint.lng}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tripWayPointTimestamp">
+        <th *matHeaderCellDef mat-header-cell>Time</th>
+        <td *matCellDef="let tripWayPoint"
+            mat-cell>{{tripWayPoint.tripWayPointTimestamp | date: 'dd/MM/yyyy hh:mm'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastStop">
+        <th *matHeaderCellDef mat-header-cell>Is last stop ?</th>
+        <td *matCellDef="let tripWayPoint" mat-cell>{{tripWayPoint.lastStop ? 'Yes' : 'No'}}</td>
+    </ng-container>
+
+    <ng-container *ngIf="!readOnly" matColumnDef="deleteAction">
+        <th *matHeaderCellDef mat-header-cell></th>
+        <td *matCellDef="let booking; let index = index;" mat-cell>
+            <a (click)="onDeleteClick($event, index)">
+                <i class="material-icons">cancel</i>
+            </a>
+        </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>

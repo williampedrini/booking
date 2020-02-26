@@ -1,0 +1,7 @@
+<h1 mat-dialog-title>Trip Way Points</h1>
+<div class="tripWayPointDialogContent" mat-dialog-content>
+    <app-trip-way-point-list [readOnly]="true" [tripWayPoints]="tripWayPoints"></app-trip-way-point-list>
+</div>
+<div mat-dialog-actions>
+    <button (click)="onCloseClick()" color="accent" mat-button>Close</button>
+</div>
