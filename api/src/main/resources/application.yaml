@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:booking;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+  rabbitmq:
+    listener:
+      simple:
+        retry:
+          enabled: true
+    template:
+      exchange: ${exchange.messageExchange}
+exchange:
+  messageExchange: MessageExchange
+  bookingExchange: BookingExchange
+queue:
+  audit: MessageAuditQueue
+  bookingAdd: BookingAddQueue
+  bookingDelete: BookingDeleteQueue
+  bookingEdit: BookingEditQueue
+logging:
+  level:
+    org.springframework: DEBUG
