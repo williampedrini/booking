@@ -15,8 +15,6 @@ import java.time.OffsetDateTime;
  *
  * <ul>
  * <li>{@link OffsetDateTime}</li>
- * <li>{@link LocalDateTime}</li>
- * <li>{@link LocalDate}</li>
  * </ul>
  *
  */
