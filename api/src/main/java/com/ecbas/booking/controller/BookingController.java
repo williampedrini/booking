@@ -31,7 +31,6 @@ class BookingController {
     private final BookingService defaultBookingService;
 
     @GetMapping
-    @ResponseStatus(OK)
     Collection<BookingDTO> findAll() {
         return this.defaultBookingService.findAll();
     }
