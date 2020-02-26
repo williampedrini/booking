@@ -1,0 +1,163 @@
+{
+  "info": {
+    "_postman_id": "11489c4d-6433-4c35-88cb-7ef4b53f55e6",
+    "name": "Booking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Booking",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "59a87aa4-7885-420e-b60d-eeb7438192aa",
+            "exec": [
+              "var response = JSON.parse(responseBody);",
+              "pm.environment.set(\"bookingId\", response);"
+            ],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "f84c459f-cea0-4d12-a301-dcfae977010a",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"passengerName\": \"passengerName112\",\n  \"passengerContactNumber\": \"passengerContactNumber\",\n  \"pickupTime\": \"2020-02-23T16:27:44.422387+11:00\",\n  \"asap\": false,\n  \"waitingTime\": 100001,\n  \"noOfPassengers\": 100000,\n  \"price\": 10.0,\n  \"rating\": 100000,\n  \"tripWayPoints\": [\n  \t{\n  \t\t\"lastStop\": true,\n  \t\t\"locality\": \"Barcelona2\",\n  \t\t\"lat\": 10.0,\n  \t\t\"lng\": 10.0,\n  \t\t\"tripWayPointTimestamp\": \"2020-02-23T12:32:57.697987Z\"\n\t}\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find All Bookings",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Find Booking By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/bookings/{{bookingId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "bookings",
+            "{{bookingId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Booking By Id",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/bookings/{{bookingId}}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "bookings",
+            "{{bookingId}}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Booking",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"passengerName\": \"passengerName12\",\n  \"passengerContactNumber\": \"passengerContactNumber\",\n  \"pickupTime\": \"2020-02-23T16:27:44.422387+11:00\",\n  \"asap\": false,\n  \"waitingTime\": 100001,\n  \"noOfPassengers\": 100000,\n  \"price\": 10.0,\n  \"rating\": 100000,\n  \"tripWayPoints\": [\n  \t{\n  \t\t\"lastStop\": true,\n  \t\t\"locality\": \"Barcelona2222\",\n  \t\t\"lat\": 10.0,\n  \t\t\"lng\": 10.0,\n  \t\t\"tripWayPointTimestamp\": \"2020-02-23T12:32:57.697987Z\"\n\t}\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/bookings/500b1e81-881d-4781-a9ad-27458e4f060b",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "bookings",
+            "500b1e81-881d-4781-a9ad-27458e4f060b"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
