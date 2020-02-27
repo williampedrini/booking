@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import static java.lang.String.format;
+import static java.util.Optional.ofNullable;
 
 @Slf4j
 @Component
@@ -23,13 +24,19 @@ class BookingEditConsumer implements Consumer<BookingEditEvent> {
     public void onEvent(final BookingEditEvent event) {
         log.info("Processing event {} with id {}.", event.getType().getValue(), event.getId());
 
-        var booking = event.getBooking();
-        var bookingToUpdate = this.repository.findById(booking.getBookingId()).orElseThrow(() -> {
-            var message = format("The Booking with id %s does not exist.", booking.getBookingId());
-            return new AmqpRejectAndDontRequeueException(message);
-        });
-
-        booking.setCreatedOn(bookingToUpdate.getCreatedOn());
-        this.repository.save(booking);
+        ofNullable(event.getBooking())
+                .ifPresentOrElse(booking ->
+                                this.repository.findById(booking.getBookingId())
+                                        .map(bookingToUpdate -> {
+                                            booking.setCreatedOn(bookingToUpdate.getCreatedOn());
+                                            return booking;
+                                        })
+                                        .ifPresentOrElse(this.repository::save, () -> {
+                                            var message = format("The Booking with id %s does not exist.", booking.getBookingId());
+                                            throw new AmqpRejectAndDontRequeueException(message);
+                                        })
+                        , () -> {
+                            throw new AmqpRejectAndDontRequeueException("The event body is mandatory.");
+                        });
     }
 }
