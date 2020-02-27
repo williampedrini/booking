@@ -21,7 +21,6 @@ import java.util.Collection;
 import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.ACCEPTED;
-import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/bookings")
