@@ -8,9 +8,9 @@
         <version>2.2.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.ecbas</groupId>
+    <groupId>com.custodio</groupId>
     <artifactId>booking-api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>booking</name>
     <description>API layer to manage bookings.</description>
 

@@ -49,7 +49,7 @@ sdk install maven 3.6.3
 Execute the following command:
 
 ```
-docker run -d --hostname ecabs-rabbit --name rabbit-assignment -e RABBITMQ_DEFAULT_VHOST=/ -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+docker run -d --hostname rabbit --name rabbit-assignment -e RABBITMQ_DEFAULT_VHOST=/ -p 15672:15672 -p 5672:5672 rabbitmq:3-management
 ```
 
 #### Lombok Plugin
